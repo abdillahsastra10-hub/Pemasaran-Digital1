@@ -556,76 +556,82 @@ body.dark-mode {
 
   @media (max-width: 600px) {
 
-
   body{
     padding-top: 170px;
   }
 
-  header{
+  header {
     padding: 12px 15px;
     gap: 12px;
-    position: relative;
+    align-items: center;
   }
 
-  header img{
-    width: 85px;
+  header img {
+    width: 100px;
   }
 
-  .title{
+  .title {
     font-size: 22px;
-    line-height: 1.2;
   }
 
-  .subtitle{
+  .subtitle {
     font-size: 12px;
-    line-height: 1.4;
   }
 
-  /* tombol pindah ke kanan atas */
-  #theme-toggle{
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    width: 38px;
-    height: 38px;
-    min-width: 38px;
-    padding: 0;
-    border-radius: 10px;
-    font-size: 18px;
+  nav {
     display: flex;
     align-items: center;
-    justify-content: center;
-  }
-
-  nav{
-    display: flex;
     justify-content: flex-start;
-    gap: 16px;
+    gap: 14px;
     padding: 10px 12px;
     overflow-x: auto;
     white-space: nowrap;
-    scrollbar-width: none;
+    scrollbar-width: none; /* Firefox */
   }
 
-  nav::-webkit-scrollbar{
+  nav ::-webkit-scrollbar {
     display: none;
+  }
+
+  #theme-toggle {
+    flex: 0 0 auto;
+    min-width: 40px;
+    height: 40px;
+    min-width: 40px;
+    padding: 0;
+    font-size: 18px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: static;
   }
 
   nav a{
     flex: 0 0 auto;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: bold;
   }
-
-  .home-text h1{
-    font-size: 52px;
+  .home-text h1 {
+    font-size: 70px;
   }
 
-  .home-text p{
-    font-size: 20px;
+  .home-text p {
+    font-size: 27px;
   }
 
-  .menu-grid{
+  .home-image img{
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .menu-preview-box h2{
+    font-size: 42px;
+    margin-bottom: 40px;
+  }
+
+  /* MENU JADI KE BAWAH */
+  .menu-grid {
     grid-template-columns: 1fr;
     gap: 28px;
   }
