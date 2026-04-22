@@ -554,46 +554,58 @@ body.dark-mode {
         }
       }
 
-      @media (max-width: 600px) {
+  @media (max-width: 600px) {
 
   body{
     padding-top: 165px;
   }
 
   header {
-    padding: 12px;
-    gap: 12px;
+    padding: 15px;
+    gap: 15px;
     align-items: center;
   }
 
   header img {
-    width: 90px;
+    width: 100px;
   }
 
   .title {
-    font-size: 22px;
-    line-height: 1.2;
+    font-size: 27px;
   }
 
   .subtitle {
-    font-size: 14px;
-    line-height: 1.4;
+    font-size: 15px;
   }
 
   nav {
-    gap: 20px;
-    font-size: 15px;
-    padding: 10px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 10px, 12px;
     overflow-x: auto;
+    white-space: nowrap;
   }
 
+  #theme-toggle {
+    flex: 0 0 auto;
+    min-width: 45px;
+    height: 40px;
+    padding: 0;
+    font-size: 18px;
+    border-radius: 10px;
+  }
+
+  nav a{
+    flex: 0 0 auto;
+    font-size: 15px;
+  }
   .home-text h1 {
-    font-size: 55px;
-    line-height: 1.1;
+    font-size: 70px;
   }
 
   .home-text p {
-    font-size: 20px;
+    font-size: 27px;
   }
 
   .home-image img{
@@ -610,8 +622,6 @@ body.dark-mode {
   .menu-grid {
     grid-template-columns: 1fr;
     gap: 35px;
-    max-width: 280px;
-    margin: auto;
   }
 
   .menu-card img{
