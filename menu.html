@@ -226,10 +226,16 @@ body.dark-mode {
       }
 
       @media (max-width: 600px) {
-        header {
-          padding: 15px;
-          gap: 15px;
-        }
+      body{
+    padding-top: 170px;
+  }
+
+    header {
+    padding: 12px 15px;
+    gap: 12px;
+    align-items: center;
+  }
+
 
         header img {
           width: 100px;
@@ -243,12 +249,40 @@ body.dark-mode {
           font-size: 15px;
         }
 
-        nav {
-          gap: 25px;
-          font-size: 17px;
-          padding: 12px;
-        }
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 14px;
+    padding: 10px 12px;
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: none; /* Firefox */
+  }
 
+  nav ::-webkit-scrollbar {
+    display: none;
+  }
+
+   #theme-toggle {
+    flex: 0 0 auto;
+    min-width: 40px;
+    height: 40px;
+    min-width: 40px;
+    padding: 0;
+    font-size: 18px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: static;
+  }
+
+  nav a{
+    flex: 0 0 auto;
+    font-size: 14px;
+    font-weight: bold;
+  }
         .menu-grid-sauce,
         .menu-grid-original,
         .menu-grid-powder {
