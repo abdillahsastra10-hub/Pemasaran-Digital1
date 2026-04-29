@@ -1,0 +1,590 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SOULY NEWS</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Poppins", sans-serif;
+        overflow-x: hidden;
+        background: #ffffff;
+        color: #111;
+        transition:
+          background 0.4s,
+          color 0.4s;
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      .main-wrapper {
+        max-width: 1220px;
+        margin: auto;
+        background: inherit;
+      }
+
+      .news-header {
+        position: sticky;
+        top: 0;
+        z-index: 999;
+        background: rgba(0, 0, 0, 0.96);
+        color: white;
+        padding: 18px 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 2px 14px rgba(0, 0, 0, 0.22);
+        border-bottom: 2px solid rgb(29, 255, 86);
+        backdrop-filter: blur(8px);
+        transition: 0.4s;
+      }
+
+      .news-title {
+        font-weight: 800;
+        font-size: 30px;
+        letter-spacing: 1px;
+      }
+
+      .news-title span {
+        color: rgb(29, 255, 86);
+      }
+
+      .news-sub {
+        font-weight: 500;
+        font-size: 12px;
+        opacity: 0.9;
+        letter-spacing: 1.4px;
+        margin-top: 2px;
+      }
+
+      .theme-toggle {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.3s;
+      }
+
+      .theme-toggle:hover {
+        transform: rotate(20deg) scale(1.08);
+      }
+
+      .theme-toggle iconify-icon {
+        font-size: 32px;
+        color: white;
+      }
+
+      .article-headline {
+        max-width: 980px;
+        margin: 42px auto 15px auto;
+        padding: 0 20px;
+        text-align: center;
+      }
+
+      .article-title {
+        font-size: 40px;
+        font-weight: 800;
+        line-height: 1.3;
+        margin-bottom: 18px;
+        text-transform: uppercase;
+      }
+
+      .article-meta {
+        max-width: 1000px;
+        margin: auto;
+        padding: 0 20px 18px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 12px;
+        letter-spacing: 1px;
+        color: #6b6b6b;
+        border-bottom: 1px solid rgba(140, 140, 140, 0.25);
+      }
+
+      .actions {
+        display: flex;
+        gap: 18px;
+      }
+
+      .actions iconify-icon {
+        font-size: 24px;
+        cursor: pointer;
+        color: gray;
+        transition: 0.25s;
+      }
+
+      .actions iconify-icon:hover {
+        transform: scale(1.12);
+      }
+
+      .article-container {
+        max-width: 1000px;
+        margin: auto;
+        padding: 28px 20px 10px 20px;
+      }
+
+      .hero-wrap {
+        float: left;
+        width: 48%;
+        margin-right: 28px;
+        margin-bottom: 12px;
+      }
+
+      .hero-wrap img {
+        width: 100%;
+        display: block;
+        border-radius: 8px;
+        box-shadow: 0 5px 18px rgba(0, 0, 0, 0.18);
+      }
+
+      .hero-caption {
+        font-size: 12px;
+        color: gray;
+        margin-top: 8px;
+        line-height: 1.5;
+      }
+
+      .article-content {
+        font-size: 16px;
+        line-height: 1.95;
+      }
+
+      .article-content.lead {
+        font-size: 17px;
+      }
+
+      .article-content p {
+        margin-bottom: 20px;
+        text-align: justify;
+      }
+
+      .article-content h3 {
+        font-size: 22px;
+        font-weight: 700;
+        margin: 35px 0 14px;
+        line-height: 1.4;
+      }
+
+      .article-full {
+        max-width: 1000px;
+        margin: auto;
+        padding: 0 20px;
+      }
+
+      .tags {
+        margin-top: 30px;
+        padding-top: 15px;
+        border-top: 1px solid rgba(150, 150, 150, 0.2);
+      }
+
+      .tags a {
+        color: #1a73e8;
+        margin-right: 8px;
+        transition: 0.3s;
+      }
+
+      .tags a:hover {
+        text-decoration: underline;
+      }
+
+      .bottom-section {
+        max-width: 1100px;
+        margin: 28px auto 0 auto;
+        padding: 28px 20px;
+        border-top: 1px solid rgba(150, 150, 150, 0.2);
+      }
+
+      .bottom-section h3 {
+        font-size: 20px;
+        margin-bottom: 20px;
+        font-weight: 700;
+        position: relative;
+        padding-left: 14px;
+      }
+
+      .bottom-section h3::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 4px;
+        width: 5px;
+        height: 22px;
+        background: rgb(29, 255, 86);
+      }
+
+      .bottom-flex {
+        display: flex;
+        gap: 22px;
+      }
+
+      .single-bottom {
+        display: flex;
+      }
+
+      a.bottom-item {
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+        color: inherit;
+        flex: 1;
+        padding: 8px;
+        border-radius: 8px;
+        transition: 0.3s;
+      }
+
+      a.bottom-item:hover {
+        background: rgba(0, 0, 0, 0.035);
+      }
+
+      .bottom-item img {
+        width: 130px;
+        height: 86px;
+        object-fit: cover;
+        border-radius: 6px;
+        transition: 0.35s;
+      }
+
+      a.bottom-item:hover img {
+        transform: scale(1.05);
+      }
+
+      .bottom-item span {
+        max-width: 220px;
+        font-weight: 500;
+        line-height: 1.55;
+        font-size: 14px;
+        transition: 0.3s;
+      }
+
+      a.bottom-item:hover span {
+        color: #1a73e8;
+        text-decoration: underline;
+      }
+
+      .footer-news {
+        margin-top: 40px;
+        padding: 30px 20px;
+        background: #050505;
+        color: #d9d9d9;
+        text-align: center;
+        font-size: 13px;
+        line-height: 1.9;
+        border-top: 2px solid rgb(29, 255, 86);
+      }
+
+      .dark {
+        background: #111;
+        color: #ececec;
+      }
+
+      .dark .news-header {
+        background: rgba(255, 230, 0, 0.95);
+        color: black;
+        border-bottom: 2px solid red;
+      }
+
+      .dark .news-title span {
+        color: red;
+      }
+
+      .dark .theme-toggle iconify-icon {
+        color: black;
+      }
+
+      .dark .article-meta {
+        color: #bdbdbd;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+      }
+
+      .dark a.bottom-item:hover {
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      .dark .footer-news {
+        background: #1b1b1b;
+        border-top: 2px solid red;
+      }
+
+      @media (max-width: 900px) {
+        .article-title {
+          font-size: 28px;
+        }
+
+        .hero-wrap {
+          float: none;
+          width: 100%;
+          margin-right: 0;
+          margin-bottom: 18px;
+        }
+
+        .bottom-flex,
+        .single-bottom {
+          flex-direction: column;
+        }
+
+        .bottom-item span {
+          max-width: 100%;
+        }
+
+        .article-meta {
+          flex-direction: column;
+          gap: 10px;
+          align-items: flex-start;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="news-header">
+      <div>
+        <div class="news-title">SOULY <span>NEWS</span></div>
+        <div class="news-sub">SALURAN BERITA TERPERCAYA</div>
+      </div>
+      <div class="theme-toggle" onclick="toggleTheme()">
+        <iconify-icon icon="mdi:sun-moon-stars"></iconify-icon>
+      </div>
+    </div>
+
+    <div class="main-wrapper">
+      <div class="article-headline">
+        <div class="article-title">CHICKEN CRUNCHY ROLL: CAMILAN AYAM CRISPY KEKINIAN YANG WAJIB DICOBA!</div>
+      </div>
+
+      <div class="article-meta">
+        <div>SOULY NEWS, 23 APRIL 2026, 13:00 WIB</div>
+        <div class="actions">
+          <iconify-icon id="like" icon="mdi:heart-outline"></iconify-icon>
+          <iconify-icon onclick="shareArticle()" icon="mdi:share-variant"></iconify-icon>
+          <iconify-icon id="save" icon="mdi:bookmark-outline"></iconify-icon>
+        </div>
+      </div>
+
+      <div class="article-container">
+        <div class="article-content lead">
+          <div class="hero-wrap">
+            <img src="coverart1.jpeg" />
+            <div class="hero-caption">Chicken Crunchy Roll, camilan ayam crispy modern yang sedang viral di kalangan pecinta street food.</div>
+          </div>
+
+          <p>
+            Di tengah banyaknya pilihan jajanan modern yang terus bermunculan, konsumen kini semakin tertarik pada makanan yang tidak hanya enak, tetapi juga unik secara tampilan dan praktis untuk dinikmati. Salah satu produk yang berhasil
+            menarik perhatian adalah Chicken Crunchy Roll, camilan ayam crispy kekinian yang menawarkan sensasi berbeda dibandingkan jajanan ayam pada umumnya.
+          </p>
+
+          <p>
+            Chicken Crunchy Roll hadir sebagai inovasi street food modern yang menggabungkan rasa gurih ayam, tekstur renyah, dan tampilan yang menarik secara visual. Produk ini sering dibandingkan dengan corndog karena bentuknya yang
+            memanjang dan mudah digenggam, namun sebenarnya memiliki karakter yang sangat berbeda. Jika corndog identik dengan sosis dan dominasi tepung, maka Chicken Crunchy Roll lebih fokus pada penggunaan daging ayam sebagai bahan utama.
+          </p>
+
+          <p>Hal inilah yang membuat Chicken Crunchy Roll menjadi pilihan menarik bagi pecinta kuliner yang ingin mencoba sesuatu yang baru namun tetap familiar di lidah.</p>
+        </div>
+      </div>
+
+      <div class="article-full">
+        <div class="article-content">
+          <h3>Apa Itu Chicken Crunchy Roll dan Kenapa Banyak Disukai?</h3>
+
+          <p>
+            Chicken Crunchy Roll adalah camilan berbahan dasar ayam yang dibentuk memanjang seperti roll, kemudian dilapisi tepung roti dan digoreng hingga menghasilkan tekstur luar yang sangat crispy. Bagian dalamnya berisi daging ayam
+            yang padat dan juicy, bahkan pada beberapa varian ditambahkan isian seperti saus keju, barbeque spicy, atau rasa lainnya yang membuat pengalaman makan menjadi lebih menarik.
+          </p>
+
+          <p>
+            Daya tarik utama dari produk ini terletak pada kombinasi tekstur dan rasa. Saat digigit, lapisan luarnya memberikan sensasi renyah yang kuat, sementara bagian dalamnya tetap lembut dan penuh rasa. Perpaduan ini membuat Chicken
+            Crunchy Roll terasa lebih “puas” dibandingkan camilan biasa. Selain itu, tampilannya juga sangat mendukung tren kuliner masa kini. Bentuknya yang unik, saus yang melimpah, dan potongan isi yang menggoda menjadikannya sangat
+            cocok untuk konten media sosial seperti Instagram dan TikTok. Tidak heran jika produk ini mudah menarik perhatian, terutama di kalangan mahasiswa, pelajar, dan pecinta jajanan viral.
+          </p>
+
+          <h3>Keunggulan Chicken Crunchy Roll Dibanding Jajanan Sejenis</h3>
+
+          <p>Banyak orang bertanya, apa yang membuat Chicken Crunchy Roll berbeda dari fried chicken biasa atau corndog? Jawabannya ada pada konsep produk yang lebih inovatif.</p>
+
+          <p>
+            - Pertama, produk ini menggunakan full daging ayam sebagai komposisi utama, bukan dominasi tepung. Ini memberikan rasa ayam yang lebih terasa dan tekstur yang lebih padat, sehingga konsumen merasa lebih puas saat menikmatinya.
+          </p>
+
+          <p>
+            - Kedua, bentuknya yang menyerupai corndog menciptakan daya tarik visual yang kuat. Makanan dengan tampilan menarik cenderung lebih mudah diingat dan lebih sering dipilih oleh konsumen, terutama generasi muda yang aktif di media
+            sosial.
+          </p>
+
+          <p>
+            - Ketiga, adanya berbagai pilihan saus dan topping membuat produk ini lebih fleksibel untuk berbagai selera. Ada yang menyukai rasa gurih seperti keju, ada juga yang lebih tertarik pada sensasi pedas dari saus barbeque spicy
+            atau bubuk pedas.
+          </p>
+
+          <p>- Keempat, Chicken Crunchy Roll sangat praktis dikonsumsi. Tidak membutuhkan alat makan tambahan, mudah dibawa, dan cocok dinikmati saat santai, nongkrong, atau bahkan di sela aktivitas kampus dan kerja.</p>
+
+          <p>Dengan kombinasi tersebut, produk ini tidak hanya sekadar jajanan, tetapi juga menjadi bagian dari gaya hidup kuliner modern.</p>
+
+          <h3>Chicken Crunchy Roll sebagai Camilan Kekinian untuk Semua Kalangan</h3>
+
+          <p>
+            Salah satu alasan mengapa Chicken Crunchy Roll cepat dikenal adalah karena target pasarnya sangat luas. Produk ini dapat dinikmati oleh hampir semua kalangan, mulai dari pelajar, mahasiswa, pekerja muda, hingga pecinta kuliner
+            yang senang mencoba makanan viral. Bagi mahasiswa, Chicken Crunchy Roll menjadi pilihan ideal karena praktis, mengenyangkan, dan cocok untuk teman nongkrong. Harganya yang terjangkau juga membuatnya mudah dijangkau tanpa harus
+            mengeluarkan biaya besar.
+          </p>
+
+          <p>
+            Bagi pekerja muda, produk ini cocok sebagai camilan cepat saji yang tetap memberikan rasa puas. Tidak sedikit orang yang mencari makanan ringan namun tetap terasa “berisi”, dan Chicken Crunchy Roll menjawab kebutuhan tersebut.
+            Sementara bagi pecinta kuliner, daya tarik utamanya terletak pada pengalaman mencoba sesuatu yang berbeda. Bentuk unik, tekstur crispy, dan isian yang variatif membuat produk ini layak masuk daftar jajanan yang wajib dicoba.
+          </p>
+
+          <p>Karena itulah, Chicken Crunchy Roll tidak hanya menjadi makanan biasa, tetapi juga bagian dari tren kuliner yang terus berkembang.</p>
+
+          <h3>Mengapa Chicken Crunchy Roll Cocok untuk Tren Kuliner Digital?</h3>
+
+          <p>
+            Di era digital, makanan tidak hanya dinilai dari rasa, tetapi juga dari seberapa menarik tampilannya saat difoto atau direkam. Inilah salah satu kekuatan terbesar Chicken Crunchy Roll. Visual produk yang menggoda sangat membantu
+            dalam pemasaran digital. Saat saus keju meleleh, lapisan crispy terdengar “kress”, atau bagian dalam ayam terlihat juicy saat dibelah, semua itu menciptakan konten yang sangat menarik untuk dilihat.
+          </p>
+
+          <p>
+            Konten seperti ini sering menjadi pemicu pembelian impulsif. Banyak konsumen awalnya hanya melihat video makanan di media sosial, lalu langsung tertarik untuk mencoba. Fenomena ini membuat produk seperti Chicken Crunchy Roll
+            memiliki potensi besar untuk berkembang melalui promosi digital. Tidak hanya itu, kemudahan pemesanan melalui platform seperti layanan pesan antar juga semakin mendukung keputusan pembelian. Konsumen tidak perlu datang langsung
+            ke lokasi, cukup melihat konten menarik lalu melakukan pemesanan dari ponsel mereka. Inilah alasan mengapa Chicken Crunchy Roll sangat relevan dengan kebiasaan konsumsi masyarakat saat ini.
+          </p>
+
+          <h3>Chicken Crunchy Roll, Pilihan Tepat untuk Pecinta Camilan Modern</h3>
+
+          <p>
+            Pada akhirnya, Chicken Crunchy Roll bukan hanya tentang ayam goreng dalam bentuk baru, tetapi tentang pengalaman menikmati camilan yang lebih menarik, praktis, dan sesuai dengan gaya hidup masa kini. Produk ini menawarkan nilai
+            lebih melalui rasa yang dominan ayam, tekstur crispy yang memuaskan, pilihan varian yang beragam, serta tampilan yang sangat mendukung tren kuliner digital. Kombinasi inilah yang membuat Chicken Crunchy Roll memiliki potensi
+            besar untuk terus diminati.
+          </p>
+
+          <p>
+            Bagi kamu yang menyukai jajanan kekinian, suka mencoba makanan viral, atau hanya sedang mencari camilan yang berbeda dari biasanya, Chicken Crunchy Roll adalah pilihan yang layak dicoba. Kadang, camilan terbaik bukan yang paling
+            mahal, tetapi yang berhasil membuat satu gigitan pertama terasa sulit dilupakan.
+          </p>
+
+          <div class="tags">
+            Tag:
+            <a href="tag.html?tag=ChickenCrunchyRoll">#ChickenCrunchyRoll</a>
+            <a href="tag.html?tag=CamilanAyamCrispy">#CamilanAyamCrispy</a>
+            <a href="tag.html?tag=JajananKekinian">#JajananKekinian</a>
+            <a href="tag.html?tag=KulinerViral">#KulinerViral</a>
+            <a href="tag.html?tag=ForYourPage">#ForYourPage</a>
+            <a href="tag.html?tag=ReviewMakanan">#ReviewMakanan</a>
+            <a href="tag.html?tag=UMKM">#UMKM</a>
+          </div>
+        </div>
+      </div>
+      <div class="bottom-section">
+        <h3>LIHAT LEBIH LANJUT</h3>
+        <div class="bottom-flex">
+          <a href="https://youtube.com/shorts/WkxnnrgQT2Q" target="_blank" class="bottom-item">
+            <img src="yt1.jpeg" />
+            <span>Chicken Crunchy Roll - Camilan Ayam Crispy Viral!</span>
+          </a>
+
+          <a href="https://youtube.com/shorts/58ztiUtEY1w" target="_blank" class="bottom-item">
+            <img src="yt2.jpeg" />
+            <span>Ayo ke Outlet Kita Di Jl. A.H. Nasution Medan Johor Guys!</span>
+          </a>
+
+          <a href="https://www.instagram.com/reel/DRMw1PQCYd0/?igsh=MW42eG53emZobjF1dA==" target="_blank" class="bottom-item">
+            <img src="yt3.jpeg" />
+            <span>Camilan Chicken Crunchy Roll Sehat, Halal & Higienis 👍🏻</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="bottom-section">
+        <h3>ARTIKEL TERKAIT</h3>
+        <div class="bottom-flex">
+          <a href="artikel2.html" class="bottom-item">
+            <img src="coverart2.jpg" />
+            <span>MANFAAT DAGING AYAM UNTUK KESEHATAN: ALASAN CHICKEN-BASED SNACK TETAP JADI FAVORITE!</span>
+          </a>
+
+          <a href="https://www.idntimes.com/food/recipe/ini-7-variasi-olahan-ayam-dari-berbagai-negara-gak-cuma-digoreng-01-zk2bj-z8465g" target="_blank" class="bottom-item">
+            <img src="art3.webp" />
+            <span>Ini 7 Variasi Olahan Ayam dari Berbagai Negara, Gak Cuma Digoreng!</span>
+          </a>
+
+          <a href="https://www.unileverfoodsolutions.co.id/id/inspirasi-chef/bagian-ayam.html" target="_blank" class="bottom-item">
+            <img src="art4.jpg" />
+            <span>28 Ide Olahan Bagian Ayam yang Paling Laris Manis Untuk Usaha Kuliner.</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="bottom-section">
+        <h3>WEB REKOMENDASI</h3>
+        <div class="single-bottom">
+          <a href="https://rujaknasution.netlify.app/#beranda" target="_blank" class="bottom-item">
+            <img src="web.jpg" />
+            <span>Kunjungi Website Kuliner Rujak Asam Manis Nasution. Rujak Viral di Medan Johor, Medan!</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="article-button-wrapper">
+  <a href="artikel2.html" class="order-btn article-btn">
+    📰 Lanjut ke Artikel Berikutnya
+  </a>
+</div>
+      <div class="footer-news">
+        © 2026 SOULY NEWS - Saluran Berita Terpercaya<br />
+        Menyajikan informasi, referensi, dan ulasan digital terkini untuk pembaca modern.
+      </div>
+    </div>
+
+    <script>
+      function toggleTheme() {
+        document.body.classList.toggle("dark");
+      }
+
+      const like = document.getElementById("like");
+      like.onclick = () => {
+        if (like.getAttribute("icon") === "mdi:heart-outline") {
+          like.setAttribute("icon", "mdi:heart");
+          like.style.color = "red";
+        } else {
+          like.setAttribute("icon", "mdi:heart-outline");
+          like.style.color = "gray";
+        }
+      };
+
+      const save = document.getElementById("save");
+      save.onclick = () => {
+        if (save.getAttribute("icon") === "mdi:bookmark-outline") {
+          save.setAttribute("icon", "mdi:bookmark");
+          save.style.color = "gold";
+        } else {
+          save.setAttribute("icon", "mdi:bookmark-outline");
+          save.style.color = "gray";
+        }
+      };
+
+      function shareArticle() {
+        if (navigator.share) {
+          navigator.share({
+            title: document.title,
+            url: window.location.href,
+          });
+        } else {
+          window.open("https://wa.me/?text=" + window.location.href);
+        }
+      }
+    </script>
+  </body>
+</html>

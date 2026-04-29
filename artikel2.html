@@ -1,0 +1,588 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SOULY NEWS</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Poppins", sans-serif;
+        overflow-x: hidden;
+        background: #ffffff;
+        color: #111;
+        transition:
+          background 0.4s,
+          color 0.4s;
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      .main-wrapper {
+        max-width: 1220px;
+        margin: auto;
+        background: inherit;
+      }
+
+      .news-header {
+        position: sticky;
+        top: 0;
+        z-index: 999;
+        background: rgba(12, 12, 95, 0.96);
+        color: white;
+        padding: 18px 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 2px 14px rgba(0, 0, 0, 0.22);
+        border-bottom: 2px solid yellow;
+        backdrop-filter: blur(8px);
+        transition: 0.4s;
+      }
+
+      .news-title {
+        font-weight: 800;
+        font-size: 30px;
+        letter-spacing: 1px;
+      }
+
+      .news-title span {
+        color: yellow;
+      }
+
+      .news-sub {
+        font-weight: 500;
+        font-size: 12px;
+        opacity: 0.9;
+        letter-spacing: 1.4px;
+        margin-top: 2px;
+      }
+
+      .theme-toggle {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.3s;
+      }
+
+      .theme-toggle:hover {
+        transform: rotate(20deg) scale(1.08);
+      }
+
+      .theme-toggle iconify-icon {
+        font-size: 32px;
+        color: white;
+      }
+
+      .article-headline {
+        max-width: 980px;
+        margin: 42px auto 15px auto;
+        padding: 0 20px;
+        text-align: center;
+      }
+
+      .article-title {
+        font-size: 38px;
+        font-weight: 800;
+        line-height: 1.3;
+        margin-bottom: 18px;
+        text-transform: uppercase;
+      }
+
+      .article-meta {
+        max-width: 1000px;
+        margin: auto;
+        padding: 0 20px 18px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 12px;
+        letter-spacing: 1px;
+        color: #6b6b6b;
+        border-bottom: 1px solid rgba(140, 140, 140, 0.25);
+      }
+
+      .actions {
+        display: flex;
+        gap: 18px;
+      }
+
+      .actions iconify-icon {
+        font-size: 24px;
+        cursor: pointer;
+        color: gray;
+        transition: 0.25s;
+      }
+
+      .actions iconify-icon:hover {
+        transform: scale(1.12);
+      }
+
+      .article-container {
+        max-width: 1000px;
+        margin: auto;
+        padding: 28px 20px 10px 20px;
+      }
+
+      .hero-wrap {
+        float: left;
+        width: 48%;
+        margin-right: 28px;
+        margin-bottom: 12px;
+      }
+
+      .hero-wrap img {
+        width: 100%;
+        display: block;
+        border-radius: 8px;
+        box-shadow: 0 5px 18px rgba(0, 0, 0, 0.18);
+      }
+
+      .hero-caption {
+        font-size: 12px;
+        color: gray;
+        margin-top: 8px;
+        line-height: 1.5;
+      }
+
+      .article-content {
+        font-size: 16px;
+        line-height: 1.95;
+      }
+
+      .article-content.lead {
+        font-size: 17px;
+      }
+
+      .article-content p {
+        margin-bottom: 20px;
+        text-align: justify;
+      }
+
+      .article-content h3 {
+        font-size: 22px;
+        font-weight: 700;
+        margin: 35px 0 14px;
+        line-height: 1.4;
+      }
+
+      .article-full {
+        max-width: 1000px;
+        margin: auto;
+        padding: 0 20px;
+      }
+
+      .tags {
+        margin-top: 30px;
+        padding-top: 15px;
+        border-top: 1px solid rgba(150, 150, 150, 0.2);
+      }
+
+      .tags a {
+        color: #1a73e8;
+        margin-right: 8px;
+        transition: 0.3s;
+      }
+
+      .tags a:hover {
+        text-decoration: underline;
+      }
+
+      .bottom-section {
+        max-width: 1100px;
+        margin: 28px auto 0 auto;
+        padding: 28px 20px;
+        border-top: 1px solid rgba(150, 150, 150, 0.2);
+      }
+
+      .bottom-section h3 {
+        font-size: 20px;
+        margin-bottom: 20px;
+        font-weight: 700;
+        position: relative;
+        padding-left: 14px;
+      }
+
+      .bottom-section h3::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 4px;
+        width: 5px;
+        height: 22px;
+        background: yellow;
+      }
+
+      .bottom-flex {
+        display: flex;
+        gap: 22px;
+      }
+
+      .single-bottom {
+        display: flex;
+      }
+
+      a.bottom-item {
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+        color: inherit;
+        flex: 1;
+        padding: 8px;
+        border-radius: 8px;
+        transition: 0.3s;
+      }
+
+      a.bottom-item:hover {
+        background: rgba(0, 0, 0, 0.035);
+      }
+
+      .bottom-item img {
+        width: 130px;
+        height: 86px;
+        object-fit: cover;
+        border-radius: 6px;
+        transition: 0.35s;
+      }
+
+      a.bottom-item:hover img {
+        transform: scale(1.05);
+      }
+
+      .bottom-item span {
+        max-width: 220px;
+        font-weight: 500;
+        line-height: 1.55;
+        font-size: 14px;
+        transition: 0.3s;
+      }
+
+      a.bottom-item:hover span {
+        color: #1a73e8;
+        text-decoration: underline;
+      }
+
+      .footer-news {
+        margin-top: 40px;
+        padding: 30px 20px;
+        background: #050505;
+        color: #d9d9d9;
+        text-align: center;
+        font-size: 13px;
+        line-height: 1.9;
+        border-top: 2px solid yellow;
+      }
+
+      .dark {
+        background: #111;
+        color: #ececec;
+      }
+
+      .dark .news-header {
+        background: rgba(80, 0, 120, 0.95);
+        border-bottom: 2px solid rgb(0, 255, 13);
+      }
+
+      .dark .news-title span {
+        color: rgb(0, 255, 13);
+      }
+
+      .dark .theme-toggle iconify-icon {
+        color: white;
+      }
+
+      .dark .article-meta {
+        color: #bdbdbd;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+      }
+
+      .dark a.bottom-item:hover {
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      .dark .footer-news {
+        background: #1b1b1b;
+        border-top: 2px solid rgb(0, 255, 13);
+      }
+
+      @media (max-width: 900px) {
+        .article-title {
+          font-size: 28px;
+        }
+
+        .hero-wrap {
+          float: none;
+          width: 100%;
+          margin-right: 0;
+          margin-bottom: 18px;
+        }
+
+        .bottom-flex,
+        .single-bottom {
+          flex-direction: column;
+        }
+
+        .bottom-item span {
+          max-width: 100%;
+        }
+
+        .article-meta {
+          flex-direction: column;
+          gap: 10px;
+          align-items: flex-start;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="news-header">
+      <div>
+        <div class="news-title">NUSANTARA <span>NEWS</span></div>
+        <div class="news-sub">BERITA MASYARAKAT INDONESIA</div>
+      </div>
+      <div class="theme-toggle" onclick="toggleTheme()">
+        <iconify-icon icon="mdi:sun-moon-stars"></iconify-icon>
+      </div>
+    </div>
+
+    <div class="main-wrapper">
+      <div class="article-headline">
+        <div class="article-title">MANFAAT DAGING AYAM UNTUK KESEHATAN: ALASAN CHICKEN-BASED SNACK TETAP JADI FAVORITE!</div>
+      </div>
+
+      <div class="article-meta">
+        <div>NUSANTARA NEWS, 25 APRIL 2026, 15:00 WIB</div>
+        <div class="actions">
+          <iconify-icon id="like" icon="mdi:heart-outline"></iconify-icon>
+          <iconify-icon onclick="shareArticle()" icon="mdi:share-variant"></iconify-icon>
+          <iconify-icon id="save" icon="mdi:bookmark-outline"></iconify-icon>
+        </div>
+      </div>
+
+      <div class="article-container">
+        <div class="article-content lead">
+          <div class="hero-wrap">
+            <img src="coverart2.jpg" />
+            <div class="hero-caption">Daging ayam menjadi bahan pangan favorit karena kaya protein, lezat, dan mudah diolah menjadi berbagai camilan modern.</div>
+          </div>
+
+          <p>
+            Daging ayam merupakan salah satu bahan makanan yang paling populer dan banyak dikonsumsi oleh masyarakat. Selain rasanya yang mudah diterima oleh berbagai kalangan, ayam juga dikenal sebagai sumber protein hewani yang memiliki
+            banyak manfaat bagi tubuh. Tidak heran jika berbagai jenis makanan berbahan dasar ayam, mulai dari lauk utama hingga camilan modern seperti chicken-based snack, selalu memiliki tempat tersendiri di hati konsumen.
+          </p>
+
+          <p>
+            Di tengah tren kuliner kekinian, makanan berbahan dasar ayam tetap menjadi pilihan favorit karena tidak hanya lezat, tetapi juga memberikan nilai gizi yang baik. Banyak orang menganggap camilan hanya sebagai makanan ringan tanpa
+            manfaat, padahal jika bahan dasarnya berkualitas seperti daging ayam, maka nilai nutrisinya pun tetap perlu diperhitungkan.
+          </p>
+
+          <p>Memahami manfaat daging ayam menjadi penting agar konsumen tidak hanya memilih makanan berdasarkan rasa dan tren, tetapi juga berdasarkan nilai kesehatan yang dikandungnya.</p>
+        </div>
+      </div>
+
+      <div class="article-full">
+        <div class="article-content">
+          <h3>Kandungan Gizi Daging Ayam yang Baik untuk Tubuh</h3>
+
+          <p>
+            Daging ayam dikenal sebagai sumber protein hewani berkualitas tinggi yang dibutuhkan tubuh setiap hari. Protein memiliki peran penting dalam membangun dan memperbaiki jaringan tubuh, menjaga massa otot, serta membantu proses
+            regenerasi sel.
+          </p>
+
+          <p>
+            Selain protein, daging ayam juga mengandung berbagai nutrisi penting seperti vitamin B6, vitamin B12, zat besi, fosfor, dan zinc. Vitamin B6 berperan dalam membantu metabolisme tubuh dan menjaga sistem saraf tetap sehat. Vitamin
+            B12 penting untuk pembentukan sel darah merah dan menjaga fungsi otak.
+          </p>
+
+          <p>
+            Kandungan zat besi membantu mencegah anemia, sedangkan fosfor berperan dalam menjaga kesehatan tulang dan gigi. Zinc juga sangat penting untuk meningkatkan daya tahan tubuh serta membantu proses penyembuhan luka. Karena
+            kandungan gizinya cukup lengkap, ayam menjadi pilihan makanan yang cocok untuk berbagai usia, mulai dari anak-anak hingga orang dewasa.
+          </p>
+
+          <h3>Manfaat Daging Ayam untuk Kesehatan Sehari-Hari</h3>
+
+          <p>Salah satu manfaat utama daging ayam adalah membantu memenuhi kebutuhan protein harian. Tubuh manusia membutuhkan protein untuk menjaga energi, memperbaiki sel yang rusak, dan mendukung aktivitas sehari-hari.</p>
+
+          <p>
+            Bagi mahasiswa dan pekerja yang memiliki mobilitas tinggi, makanan berbahan dasar ayam sering menjadi pilihan karena mengenyangkan dan memberikan rasa puas lebih lama dibandingkan camilan berbasis tepung saja. Hal ini membuat
+            ayam cocok sebagai sumber energi tambahan di tengah aktivitas padat.
+          </p>
+
+          <p>
+            Daging ayam juga membantu menjaga massa otot, terutama bagi mereka yang aktif berolahraga atau memiliki rutinitas fisik yang cukup tinggi. Protein dari ayam lebih mudah diterima tubuh dan sering menjadi pilihan utama dalam pola
+            makan sehat.
+          </p>
+
+          <p>
+            Selain itu, kandungan vitamin B dalam ayam membantu tubuh mengubah makanan menjadi energi, sehingga tubuh tidak mudah lelah. Ini menjadi alasan mengapa menu berbahan dasar ayam sering dipilih sebagai makanan praktis namun tetap
+            bernutrisi.
+          </p>
+
+          <h3>Mengapa Camilan Berbahan Ayam Lebih Menarik?</h3>
+
+          <p>
+            Di pasaran, banyak camilan cepat saji yang didominasi oleh tepung atau karbohidrat sederhana. Meskipun rasanya enak, jenis camilan seperti ini sering kali kurang memberikan rasa kenyang yang bertahan lama. Berbeda dengan camilan
+            berbahan dasar ayam, konsumen mendapatkan sensasi makan yang lebih “berisi” karena adanya kandungan protein. Inilah yang membuat snack berbahan ayam terasa lebih memuaskan.
+          </p>
+
+          <p>
+            Selain itu, ayam memiliki rasa yang fleksibel dan mudah dipadukan dengan berbagai saus, bumbu, dan topping. Mulai dari rasa keju, barbeque, pedas, hingga jagung manis, semuanya bisa dikombinasikan tanpa menghilangkan cita rasa
+            utama ayam itu sendiri. Keunggulan lainnya adalah ayam mudah diterima oleh hampir semua kalangan. Tidak terlalu berat seperti makanan utama, tetapi juga tidak terasa “kosong” seperti camilan ringan biasa. Posisi inilah yang
+            membuat chicken-based snack menjadi sangat populer di kalangan remaja, mahasiswa, dan pekerja muda.
+          </p>
+
+          <h3>Tips Memilih Makanan Berbahan Ayam yang Berkualitas</h3>
+
+          <p>
+            Meskipun ayam memiliki banyak manfaat, konsumen tetap perlu memperhatikan kualitas produk yang dikonsumsi. Pilihlah makanan berbahan ayam yang menggunakan komposisi daging lebih dominan dibandingkan campuran tepung berlebih.
+          </p>
+
+          <p>
+            Perhatikan juga proses pengolahan makanan. Produk yang dibuat dengan standar kebersihan yang baik tentu lebih aman untuk dikonsumsi. Tampilan makanan yang menarik memang penting, tetapi kualitas bahan tetap harus menjadi
+            prioritas utama.
+          </p>
+
+          <p>
+            Selain itu, konsumen juga sebaiknya memilih produk yang memiliki rasa seimbang, tidak terlalu berminyak, dan tetap memberikan cita rasa alami dari ayam itu sendiri. Dengan memilih produk yang tepat, camilan berbahan ayam tidak
+            hanya menjadi makanan yang enak, tetapi juga memberikan manfaat yang lebih baik untuk tubuh.
+          </p>
+
+          <h3>Daging Ayam, Lezat dan Tetap Bernilai Gizi</h3>
+
+          <p>
+            Daging ayam bukan hanya sekadar bahan makanan yang populer, tetapi juga sumber nutrisi penting yang mendukung kesehatan tubuh. Kandungan protein, vitamin, dan mineral di dalamnya menjadikan ayam sebagai pilihan yang tepat untuk
+            konsumsi harian maupun dalam bentuk camilan modern.
+          </p>
+
+          <p>
+            Di era sekarang, konsumen semakin cerdas dalam memilih makanan. Rasa memang penting, tetapi nilai gizi juga menjadi pertimbangan utama. Inilah mengapa makanan berbahan dasar ayam tetap memiliki daya tarik yang kuat di tengah
+            banyaknya pilihan kuliner.
+          </p>
+
+          <p>
+            Bagi masyarakat yang menyukai camilan praktis namun tetap ingin mendapatkan rasa puas dan manfaat gizi, produk berbahan dasar ayam menjadi pilihan yang sangat relevan. Lezat, mengenyangkan, dan bernilai gizi—kombinasi inilah
+            yang membuat ayam selalu menjadi favorit sepanjang waktu.
+          </p>
+
+          <div class="tags">
+            Tag:
+            <a href="tag.html?tag=ManfaatDagingAyam">#ManfaatDagingAyam</a>
+            <a href="tag.html?tag=ProteinAyam">#ProteinAyam</a>
+            <a href="tag.html?tag=GiziDagingAyam">#GiziDagingAyam</a>
+            <a href="tag.html?tag=CamilanBerbahanAyam">#CamilanBerbahanAyam</a>
+            <a href="tag.html?tag=NutrisiAyam">#NutrisiAyam</a>
+            <a href="tag.html?tag=HealthyFood">#HealthyFood</a>
+            <a href="tag.html?tag=ProteinHarian">#ProteinHarian</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+      <div class="bottom-section">
+        <h3>LIHAT LEBIH LANJUT</h3>
+        <div class="bottom-flex">
+          <a href="https://youtube.com/shorts/6qBkieRw0-s?si=tY8r8LZFTDNgDx48" target="_blank" class="bottom-item">
+            <img src="yt1-art2.jpeg" />
+            <span>Terlalu Pedas? Tambahin Pemanis Dong! Jangan Lupa Jajan Chicken Crunchy Roll Ya! 🩷</span>
+          </a>
+
+          <a href="https://www.instagram.com/reel/DXbkip9TXjo/?igsh=c25kcGQzdnB4Mjl6" target="_blank" class="bottom-item">
+            <img src="yt2-art2.jpeg" />
+            <span>Viral bukan tanpa alasan 😏 Rasanya enak parah, isi dan sausnya gak pelit sama sekali 🤤</span>
+          </a>
+
+          <a href="https://www.instagram.com/reel/DXeCd3FyrHv/?igsh=MWMxdTFjYm1mbmd3dg==" target="_blank" class="bottom-item">
+            <img src="yt3-art2.jpeg" />
+            <span>Gak bosan-bosan makan camilan 1 ini 😍 Tekstur crunchy dan ayamnya berasa!</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="bottom-section">
+        <h3>ARTIKEL TERKAIT</h3>
+        <div class="bottom-flex">
+          <a href="artikel1.html" class="bottom-item">
+            <img src="coverart1.jpeg" />
+            <span>CHICKEN CRUNCHY ROLL: CAMILAN AYAM CRISPY KEKINIAN YANG WAJIB DICOBA!</span>
+          </a>
+
+          <a href="https://www.maggi.id/recipes/sempol-ayam" target="_blank" class="bottom-item">
+            <img src="art7.avif" />
+            <span>Resep Sempol Ayam sederhana yang gurih dan cocok jadi ide usaha.</span>
+          </a>
+
+          <a href="https://www.dapurumami.com/artikel-tips/aneka-resep-camilan-ayam-yang-kreatif-dan-bikin-nagih" target="_blank" class="bottom-item">
+            <img src="art8.png" />
+            <span>Aneka Resep Camilan Ayam yang Kreatif dan Bikin Nagih.</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-news">
+        © 2026 NUSANTARA NEWS - Berita Masyarakat Indonesia<br />
+        Menyajikan informasi, referensi, dan ulasan digital terkini untuk pembaca modern.
+      </div>
+    </div>
+
+   <script>
+  function toggleTheme() {
+    document.body.classList.toggle("dark");
+  }
+
+  const like = document.getElementById("like");
+  if (like) {
+    like.onclick = () => {
+      if (like.getAttribute("icon") === "mdi:heart-outline") {
+        like.setAttribute("icon", "mdi:heart");
+        like.style.color = "red";
+      } else {
+        like.setAttribute("icon", "mdi:heart-outline");
+        like.style.color = "gray";
+      }
+    };
+  }
+
+  const save = document.getElementById("save");
+  if (save) {
+    save.onclick = () => {
+      if (save.getAttribute("icon") === "mdi:bookmark-outline") {
+        save.setAttribute("icon", "mdi:bookmark");
+        save.style.color = "gold";
+      } else {
+        save.setAttribute("icon", "mdi:bookmark-outline");
+        save.style.color = "gray";
+      }
+    };
+  }
+
+  function shareArticle() {
+    if (navigator.share) {
+      navigator.share({
+        title: document.title,
+        url: window.location.href,
+      });
+    } else {
+      window.open("https://wa.me/?text=" + window.location.href);
+    }
+  }
+</script>
+
+  </body>
+</html>

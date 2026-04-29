@@ -362,6 +362,15 @@ body.dark-mode {
           box-shadow 0.2s ease;
       }
 
+      .article-button-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .order-btn {
+    box-sizing: border-box;
+  }
       .review-card:hover {
         transform: scale(1.03);
         box-shadow: 0 0 17px rgba(177, 18, 38, 0.7);
@@ -463,6 +472,20 @@ body.dark-mode {
         font-weight: bold;
         font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
       }
+
+.article-button-wrapper {
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+}
+
+.order-btn {
+  box-sizing: border-box;
+}
+
+.article-btn {
+  background: linear-gradient(135deg, #6e0b7b, #a40ebf);
+}
 
       /* ================= RESPONSIVE ================= */
       @media (min-width: 901px) {
@@ -650,6 +673,16 @@ body.dark-mode {
   #menu-preview {
     padding-top: 50px ;
   }
+
+.article-button-wrapper {
+  padding: 0 15px;
+}
+
+.article-button-wrapper .order-btn {
+  width: 100%;
+  max-width: 320px;
+  height: 55px;
+}
 }
     </style>
   </head>
@@ -882,6 +915,12 @@ body.dark-mode {
      class="about-link">
      📢 &nbsp;Bergabung
   </a>
+
+  <div class="article-button-wrapper">
+  <a href="artikel1.html" class="order-btn article-btn">
+    📰 Kunjungi Artikel Kami
+  </a>
+
 </div>
         </div>
       </div>
